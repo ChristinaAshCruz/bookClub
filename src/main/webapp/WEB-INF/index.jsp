@@ -28,103 +28,153 @@ pageEncoding="UTF-8"%>
         <div class="card p-3">
           <h1 class="mb-0">Register</h1>
           <hr />
-          <form
-            action="/user/new"
+          <!-- REGISTRATION FORM -->
+          <form:form
+            action="/register"
             class="mt-2"
             method="POST"
-            modelAttribute="user"
+            modelAttribute="newUser"
           >
             <div class="d-flex mb-3 align-items-center">
-              <label for="userName" path="userName" class="form-label col-2"
-                >Username:</label
+              <form:label
+                for="username"
+                path="username"
+                class="form-label col-2"
+                >Username:</form:label
               >
-              <input
+              <form:input
                 type="text"
                 class="form-control"
-                path="userName"
-                name="userName"
+                path="username"
+                name="username"
               />
+              <div class="mb-3">
+                <form:errors
+                  path="username"
+                  class="text-danger mb-3"
+                ></form:errors>
+              </div>
             </div>
             <div class="mb-3"></div>
             <div class="d-flex mb-3 align-items-center">
-              <label for="email" path="email" class="form-label col-2"
-                >Email:</label
+              <form:label for="email" path="email" class="form-label col-2"
+                >Email:</form:label
               >
-              <input
+              <form:input
                 type="text"
                 class="form-control"
                 path="email"
                 name="email"
               />
+              <div class="mb-3">
+                <form:errors
+                  path="email"
+                  class="text-danger mb-3"
+                ></form:errors>
+              </div>
             </div>
             <div class="mb-3"></div>
+            <!-- LOGIN FORM -->
             <div class="d-flex mb-3 align-items-center">
-              <label for="password" path="password" class="form-label col-2"
-                >Password:</label
+              <form:label
+                for="password"
+                path="password"
+                class="form-label col-2"
+                >Password:</form:label
               >
-              <input
+              <form:input
                 type="password"
                 class="form-control"
                 path="password"
                 name="password"
               />
+              <div class="mb-3">
+                <form:errors
+                  path="password"
+                  class="text-danger mb-3"
+                ></form:errors>
+              </div>
             </div>
             <div class="mb-3"></div>
             <div class="d-flex mb-3 align-items-center">
-              <label for="confirm" path="confirm" class="form-label col-2"
-                >Confirm Password:</label
+              <form:label
+                for="confirPassword"
+                path="confirPassword"
+                class="form-label col-2"
+                >Confirm Password:</form:label
               >
-              <input
+              <form:input
                 type="password"
                 class="form-control"
-                path="confirm"
-                name="confirm"
+                path="confirPassword"
+                name="confirPassword"
               />
+            </div>
+            <div class="mb-3">
+              <form:errors
+                path="confirPassword"
+                class="text-danger mb-3"
+              ></form:errors>
             </div>
             <div class="mb-3"></div>
             <div class="d-flex justify-content-end">
               <button class="btn btn-primary px-4">Register</button>
             </div>
-          </form>
+          </form:form>
         </div>
       </div>
       <div class="col">
         <div class="card p-3">
           <h1 class="mb-0">Login</h1>
           <hr />
-          <form
-            action="/login/new"
+          <form:form
+            action="/login"
             method="POST"
-            modelAttribute="loginUser"
+            modelAttribute="newLogin"
             class="mt-2"
           >
             <div class="d-flex mb-3 align-items-center">
-              <label for="email" path="email" class="form-label col-2"
-                >Email:</label
+              <form:label for="email" path="email" class="form-label col-2"
+                >Email:</form:label
               >
-              <input
+              <form:input
                 type="text"
                 class="form-control"
                 path="email"
                 name="email"
               />
+              <div class="mb-3">
+                <form:errors
+                  path="email"
+                  class="text-danger mb-3"
+                ></form:errors>
+              </div>
             </div>
             <div class="d-flex mb-3 align-items-center">
-              <label for="password" path="password" class="form-label col-2"
-                >Password:</label
+              <form:label
+                for="password"
+                path="password"
+                class="form-label col-2"
+                >Password:</form:label
               >
-              <input
+              <form:input
                 type="password"
                 class="form-control"
                 path="password"
                 name="password"
               />
+              <div class="mb-3">
+                <form:errors
+                  path="password"
+                  class="text-danger mb-3"
+                ></form:errors>
+              </div>
             </div>
             <div class="mb-3"></div>
             <div class="d-flex justify-content-end">
               <button class="btn btn-primary px-4">Login</button>
             </div>
-          </form>
+          </form:form>
         </div>
       </div>
     </div>

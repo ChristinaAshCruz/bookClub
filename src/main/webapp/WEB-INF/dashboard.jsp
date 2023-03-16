@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
       class="d-flex justify-content-between align-items-baseline mb-3"
       id="header"
     >
-      <h1>Welcome, User!</h1>
+      <h1>Welcome, <c:out value="${user.username}"></c:out>!</h1>
       <span><a href="/" class="btn btn-primary">Logout</a></span>
     </div>
     <hr />
