@@ -53,13 +53,13 @@ pageEncoding="UTF-8"%>
         </thead>
         <tr>
           <td>
-            <a href="#">Title</a>
+            <a href="/book/view">Title</a>
           </td>
           <td>Test</td>
           <td>Test</td>
           <td>Test</td>
           <td>
-            <a href="/edit" class="btn btn-primary col-3">Edit</a>
+            <a href="/book/edit" class="btn btn-primary col-3">Edit</a>
             <a href="/delete" class="btn btn-primary col-3">Delete</a>
           </td>
         </tr>

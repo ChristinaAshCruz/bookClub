@@ -48,12 +48,12 @@ pageEncoding="UTF-8"%>
                 path="username"
                 name="username"
               />
-              <div class="mb-3">
-                <form:errors
-                  path="username"
-                  class="text-danger mb-3"
-                ></form:errors>
-              </div>
+            </div>
+            <div class="mb-3">
+              <form:errors
+                path="username"
+                class="text-danger mb-3"
+              ></form:errors>
             </div>
             <div class="mb-3"></div>
             <div class="d-flex mb-3 align-items-center">
@@ -66,12 +66,9 @@ pageEncoding="UTF-8"%>
                 path="email"
                 name="email"
               />
-              <div class="mb-3">
-                <form:errors
-                  path="email"
-                  class="text-danger mb-3"
-                ></form:errors>
-              </div>
+            </div>
+            <div class="mb-3">
+              <form:errors path="email" class="text-danger mb-3"></form:errors>
             </div>
             <div class="mb-3"></div>
             <!-- LOGIN FORM -->
@@ -88,12 +85,12 @@ pageEncoding="UTF-8"%>
                 path="password"
                 name="password"
               />
-              <div class="mb-3">
-                <form:errors
-                  path="password"
-                  class="text-danger mb-3"
-                ></form:errors>
-              </div>
+            </div>
+            <div class="mb-3">
+              <form:errors
+                path="password"
+                class="text-danger mb-3"
+              ></form:errors>
             </div>
             <div class="mb-3"></div>
             <div class="d-flex mb-3 align-items-center">
@@ -143,12 +140,9 @@ pageEncoding="UTF-8"%>
                 path="email"
                 name="email"
               />
-              <div class="mb-3">
-                <form:errors
-                  path="email"
-                  class="text-danger mb-3"
-                ></form:errors>
-              </div>
+            </div>
+            <div class="mb-3">
+              <form:errors path="email" class="text-danger mb-3"></form:errors>
             </div>
             <div class="d-flex mb-3 align-items-center">
               <form:label
@@ -163,12 +157,12 @@ pageEncoding="UTF-8"%>
                 path="password"
                 name="password"
               />
-              <div class="mb-3">
-                <form:errors
-                  path="password"
-                  class="text-danger mb-3"
-                ></form:errors>
-              </div>
+            </div>
+            <div class="mb-3">
+              <form:errors
+                path="password"
+                class="text-danger mb-3"
+              ></form:errors>
             </div>
             <div class="mb-3"></div>
             <div class="d-flex justify-content-end">

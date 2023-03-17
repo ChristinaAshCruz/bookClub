@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!-- Formatting (dates) -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!-- form -->
+<!-- form:form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!-- for rendering errors on PUT routes -->
 <%@ page isErrorPage="true" %>
@@ -12,7 +12,7 @@ pageEncoding="UTF-8"%>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>New Book</title>
+    <title>Edit Entry</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <!-- change to match your file/naming structure -->
@@ -25,12 +25,12 @@ pageEncoding="UTF-8"%>
       class="d-flex justify-content-between align-items-baseline mb-3"
       id="header"
     >
-      <h1>Add a Book to Your Shelf!</h1>
+      <h1>Change your Entry</h1>
       <span><a href="/book" class="btn btn-primary">Back to Dashboard</a></span>
     </div>
     <hr />
     <div class="mt-4">
-      <form
+      <form:form
         action="/book/new"
         method="POST"
         modelAttribute="newBook"
@@ -59,7 +59,7 @@ pageEncoding="UTF-8"%>
           </div>
           <button class="btn btn-primary col-2">Submit</button>
         </div>
-      </form>
+      </form:form>
     </div>
   </body>
 </html>
