@@ -35,6 +35,10 @@ public class UserService {
 	// register user
 	public User register(User u, BindingResult result) {
 		// if the confirmPassword != password
+		Optional<User> potentialUser = userRepo.findByEmail(u.getEmail());
+		if(potentialUser.isPresent()) {
+			result.rejectValue("email", null, "This email is already taken");
+		}
 		if(!u.getConfirPassword().equals(u.getPassword())) {
 			// add error to your confirPassword input in your jsp
 			result.rejectValue("confirPassword", null, "Passwords do not match!");
@@ -48,14 +52,27 @@ public class UserService {
 	}
 	
 	// login user
+//	public User login(LoginUser l, BindingResult result) {
+//		Optional<User> optionalUser = userRepo.findByEmail(l.getEmail());
+//		if(optionalUser.isEmpty() || !BCrypt.checkpw(l.getPassword(), optionalUser.get().getPassword())){
+//			result.rejectValue("password", null, "Your email or password is incorrect!");
+//			return null;
+//		} else {
+//			return optionalUser.get();
+//		}
+//	}
+	
 	public User login(LoginUser l, BindingResult result) {
 		Optional<User> optionalUser = userRepo.findByEmail(l.getEmail());
-		if(optionalUser.isEmpty() || !BCrypt.checkpw(l.getPassword(), optionalUser.get().getPassword())){
-			result.rejectValue("password", null, "Your email or password is incorrect!");
+		// if the optionalUser is empty OR if  the check password fails -> return null
+		if (optionalUser.isEmpty() || !BCrypt.checkpw(l.getPassword(), optionalUser.get().getPassword())){
+			result.rejectValue("password", null, "Incorrect email or password!");
 			return null;
 		} else {
+		// ELSE -> return the user object 
 			return optionalUser.get();
 		}
+		
 	}
 	
 }

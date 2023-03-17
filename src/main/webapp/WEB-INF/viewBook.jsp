@@ -25,43 +25,48 @@ pageEncoding="UTF-8"%>
       class="d-flex justify-content-between align-items-baseline mb-3"
       id="header"
     >
-      <h1>View {Book Title here...}</h1>
+      <h1><c:out value="${thisBook.title}"></c:out></h1>
       <span><a href="/book" class="btn btn-primary">Back to Dashboard</a></span>
     </div>
-    <em> </em>
     <div class="card mb-3 p-3" id="info-row">
       <h4>
-        <span class="text-danger"> Jane </span>
+        <c:choose>
+          <c:when test="${thisBook.submittedBy.id == sessionScope.userId}">
+            <span class="text-danger">You</span>
+          </c:when>
+          <c:when test="${thisBook.submittedBy.id != sessionScope.userId}">
+            <span class="text-danger"
+              ><c:out value="${thisBook.submittedBy.name}"></c:out
+            ></span>
+          </c:when>
+        </c:choose>
         read
-        <span class="text-success">book title</span>
+        <span class="text-success"
+          ><c:out value="${thisBook.title}"></c:out
+        ></span>
         by
-        <span class="text-warning"> author name </span>
+        <span class="text-primary"
+          ><c:out value="${thisBook.author}"></c:out
+        ></span>
       </h4>
     </div>
+
     <div class="card p-3 mb-3">
-      <h4>Here are Jane's thoughts:</h4>
+      <h4>
+        Here are <c:out value="${thisBook.submittedBy.name}"></c:out>'s
+        thoughts:
+      </h4>
       <hr />
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam aliquam
-        quod esse, dolores repellendus minima deleniti earum modi illo quos
-        quidem veniam tenetur atque nobis iure pariatur voluptas dicta
-        delectus?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
-        unde voluptas qui quas corrupti aliquid architecto voluptates aspernatur
-        quis placeat possimus dignissimos vero quae laudantium veniam labore,
-        quam ipsum nulla. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Molestias ut distinctio impedit inventore necessitatibus, qui
-        cupiditate aperiam deleniti doloremque fugit quasi dignissimos incidunt
-        recusandae nobis reprehenderit eveniet, nisi aut sapiente. Lorem ipsum
-        dolor sit amet consectetur adipisicing elit. Animi temporibus reiciendis
-        consectetur aspernatur nemo, sapiente quibusdam possimus. Similique
-        quisquam in, cum dicta exercitationem eum, dolorum nemo asperiores id a
-        labore?
+        <c:out value="${thisBook.thoughts}"></c:out>
       </p>
       <hr />
     </div>
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-primary me-2">edit</button>
-      <button class="btn btn-primary">delete</button>
-    </div>
+    <c:if test="${thisBook.submittedBy.id == sessionScope.userId}">
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary me-2">edit</button>
+        <button class="btn btn-primary">delete</button>
+      </div>
+    </c:if>
   </body>
 </html>

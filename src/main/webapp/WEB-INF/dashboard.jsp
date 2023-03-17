@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
       class="d-flex justify-content-between align-items-baseline mb-3"
       id="header"
     >
-      <h1>Welcome, <c:out value="${user.username}"></c:out>!</h1>
+      <h1>Welcome, <c:out value="${user.name}"></c:out>!</h1>
       <span><a href="/" class="btn btn-primary">Logout</a></span>
     </div>
     <hr />
@@ -46,23 +46,47 @@ pageEncoding="UTF-8"%>
           <tr id="header-row">
             <th scope="col">Title</th>
             <th scope="col">Author</th>
-            <th scope="col"># of Pages</th>
-            <th scope="col">Language</th>
+            <th scope="col">Posted By</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tr>
-          <td>
-            <a href="/book/view">Title</a>
-          </td>
-          <td>Test</td>
-          <td>Test</td>
-          <td>Test</td>
-          <td>
-            <a href="/book/edit" class="btn btn-primary col-3">Edit</a>
-            <a href="/delete" class="btn btn-primary col-3">Delete</a>
-          </td>
-        </tr>
+        <c:forEach var="book" items="${allBooks}">
+          <c:choose>
+            <c:when test="${book.submittedBy.id == user.id}">
+              <tr>
+                <td>
+                  <a href="/book/${book.id}/view">
+                    <c:out value="${book.title}"></c:out>
+                  </a>
+                </td>
+                <td><c:out value="${book.author}"></c:out></td>
+                <td><c:out value="${book.submittedBy.name}"></c:out></td>
+                <td>
+                  <a href="/book/${book.id}/edit" class="btn btn-primary col-3"
+                    >Edit</a
+                  >
+                  <a
+                    href="/book/${book.id}/delete"
+                    class="btn btn-primary col-3"
+                    >Delete</a
+                  >
+                </td>
+              </tr>
+            </c:when>
+            <c:when test="${book.submittedBy.id != user.id}">
+              <tr>
+                <td>
+                  <a href="/book/${book.id}/view">
+                    <c:out value="${book.title}"></c:out>
+                  </a>
+                </td>
+                <td><c:out value="${book.author}"></c:out></td>
+                <td><c:out value="${book.submittedBy.name}"></c:out></td>
+                <td></td>
+              </tr>
+            </c:when>
+          </c:choose>
+        </c:forEach>
       </table>
     </div>
   </body>

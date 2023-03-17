@@ -49,36 +49,20 @@ public class HomeController {
 		User user = userServ.login(loginUser, result);
 		if (user == null) {
 			model.addAttribute("newUser", new User());
-			return null;
+			return "index.jsp";
 		} else {
 			session.setAttribute("userId", user.getId());
 			return "redirect:/book";
 		}
 	}
 	
-	
 	//dashboard
-	@GetMapping("/book")
-	public String dashboard(Model model, HttpSession session) {
-		if(session.getAttribute("userId") == null) {
-			return "redirect:/";
-		} else {
-			Long userId = (Long) session.getAttribute("userId");
-			User loggedUser = userServ.findById(userId);
-			model.addAttribute("user", loggedUser);
-			return "dashboard.jsp";
-		}
-	}
+
 	
 	// process new book form jsp
-	@GetMapping("/book/new")
-	public String newBook() {
-		return "newBook.jsp";
-	}
 	
 	//add post /book/new method here
 	
 	//view book
-	
 	//edit book (if belongs to user)
 }

@@ -36,24 +36,18 @@ pageEncoding="UTF-8"%>
             modelAttribute="newUser"
           >
             <div class="d-flex mb-3 align-items-center">
-              <form:label
-                for="username"
-                path="username"
-                class="form-label col-2"
-                >Username:</form:label
+              <form:label for="name" path="name" class="form-label col-2"
+                >Name:</form:label
               >
               <form:input
                 type="text"
                 class="form-control"
-                path="username"
-                name="username"
+                path="name"
+                name="name"
               />
             </div>
             <div class="mb-3">
-              <form:errors
-                path="username"
-                class="text-danger mb-3"
-              ></form:errors>
+              <form:errors path="name" class="text-danger mb-3"></form:errors>
             </div>
             <div class="mb-3"></div>
             <div class="d-flex mb-3 align-items-center">

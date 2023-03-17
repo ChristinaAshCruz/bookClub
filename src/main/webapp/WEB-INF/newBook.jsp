@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%>
     </div>
     <hr />
     <div class="mt-4">
-      <form
+      <form:form
         action="/book/new"
         method="POST"
         modelAttribute="newBook"
@@ -38,28 +38,37 @@ pageEncoding="UTF-8"%>
       >
         <div class="card p-3 mb-3" id="form-card">
           <div class="mb-3">
-            <label path="title" class="form-label">Title:</label>
-            <input path="title" class="form-control" />
+            <form:label path="title" class="form-label">Title:</form:label>
+            <form:input path="title" class="form-control" />
           </div>
           <div class="mb-3">
-            <label path="author" class="form-label">Author:</label>
-            <input path="author" class="form-control" />
+            <form:errors path="title" class="text-danger mb-3"></form:errors>
           </div>
           <div class="mb-3">
-            <label for="thoughts" class="mb-2" path="thoughts"
-              >My Thoughts:</label
+            <form:label path="author" class="form-label">Author:</form:label>
+            <form:input path="author" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <form:errors path="author" class="text-danger mb-3"></form:errors>
+          </div>
+          <div class="mb-3">
+            <form:label for="thoughts" class="mb-2" path="thoughts"
+              >My Thoughts:</form:label
             >
-            <textarea
+            <form:textarea
               class="form-control"
               placeholder="Write your thoughts here..."
               name="thoughts"
               path="thoughts"
               style="height: 100px"
-            ></textarea>
+            ></form:textarea>
+          </div>
+          <div class="mb-3">
+            <form:errors path="thoughts" class="text-danger mb-3"></form:errors>
           </div>
           <button class="btn btn-primary col-2">Submit</button>
         </div>
-      </form>
+      </form:form>
     </div>
   </body>
 </html>
