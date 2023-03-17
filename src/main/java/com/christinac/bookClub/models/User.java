@@ -1,12 +1,16 @@
 package com.christinac.bookClub.models;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -26,19 +30,20 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@NotEmpty
-	@Size(min=3)
+	@Size(min=3, message="Your username must be at least 3 characters long!")
 	private String username;
 	@NotEmpty
 	@Email
 	private String email;
 	@NotEmpty
-	@Size(min=8)
+	@Size(min=8, message="Your password must be at least 8 characters long!")
 	private String password;
 	@Transient
 	private String confirPassword;
 	
 	// relationship to other models
-	
+	@OneToMany(mappedBy="submittedBy", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Book> booksSubmitted;
 
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -92,6 +97,15 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
 	
+	//getters and setters for list of books submitted by user
+	public List<Book> getBooksSubmitted() {
+		return booksSubmitted;
+	}
+
+	public void setBooksSubmitted(List<Book> booksSubmitted) {
+		this.booksSubmitted = booksSubmitted;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();

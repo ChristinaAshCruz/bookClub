@@ -10,7 +10,7 @@ public class LoginUser {
 	@Email
 	private String email;
 	@NotEmpty
-	@Size(min=8)
+	@Size(min=8, message="Your password must be at least 8 characters long!")
 	private String password;
 	
 	// constructor
